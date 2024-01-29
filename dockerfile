@@ -4,7 +4,7 @@ WORKDIR /app
 
 ADD . .
 
-RUN yarn install
+RUN yarn install --prod=true
 
 EXPOSE 8080
 
