@@ -17,6 +17,7 @@ io.on("connection", (socket) => {
 
     socket.on("button clicked", () => {
         console.log(`${socket.id} clicked button`);
+        socket.broadcast.emit("button clicked", socket.id);
     });
 });
 
