@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "start": "node src/index.js",
-    "start:dev": "nodemon"
+    "start:dev": "nodemon",
+    "build": " docker build -t osselet .",
+    "run": "docker run --rm -it -p 8080:8080 osselet"
   },
   "dependencies": {
     "express": "^4.18.2",
