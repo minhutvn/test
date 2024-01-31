@@ -9,12 +9,13 @@
 
 ### Running app
 
-- Run `$ yarn start:dev`.
+- Run `$ yarn start-server:dev`.
+- Run `$ yarn start-client:dev`.
 
 ### Info
 
-- Server side code is contained in `/src`.
-- Client side code is contained in `/public`.
+- Server side code is contained in `/server`.
+- Client side code is contained in `/client` and `/public`.
 - Will launch on http://localhost:8080/.
 
 ### Build production
