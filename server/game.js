@@ -89,5 +89,20 @@ module.exports.setUp = (io) => {
                 socket.emit("row played", game, rowIndex);
             }
         });
+
+        socket.on("restart game", () => {
+            const game = gamesBySocketsId[socket.id];
+
+            if (game?.sockets.length !== 2) { return; }
+
+            game.currentPlayer = randomIntFromInterval(0, 1);
+            game.diceValue = null;
+            game.gameOver = false;
+            game.state = Array.from({ length: 2 }, () => Array.from({ length: 3 }, () => []));
+
+            for (const socket in game.sockets) {
+                socket.emit("game restarted", game);
+            }
+        });
     });
 }
