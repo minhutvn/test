@@ -4,6 +4,10 @@ function generateGameId() {
     return randomBytes(4).toString("hex");
 }
 
+function randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 const gamesById = {};
 const gamesBySocketsId = {};
 
@@ -14,8 +18,10 @@ module.exports.setUp = (io) => {
             const game = {
                 id: gameId,
                 sockets: [socket],
-                // array of 0 of shape (2, 3, 3)
-                state: Array.from({ length: 2 }, () => Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => 0)))
+                currentPlayer: null,
+                diceValue: null,
+                gameOver: false,
+                state: Array.from({ length: 2 }, () => Array.from({ length: 3 }, () => []))
             };
 
             gamesById[gameId] = game;
@@ -27,13 +33,60 @@ module.exports.setUp = (io) => {
         socket.on("join game", (gameId) => {
             const game = gamesById[gameId];
 
-            if (game?.sockets.length != 1) { return; }
+            if (game?.sockets.length !== 1) { return; }
 
             game.sockets.push(socket);
             gamesBySocketsId[socket.id] = game;
 
+            game.currentPlayer = randomIntFromInterval(0, 1);
+
             for (const socket in game.sockets) {
                 socket.emit("game joined", game);
+            }
+        });
+
+        socket.on("roll dice", () => {
+            const game = gamesBySocketsId[socket.id];
+
+            if (game?.sockets[game.currentPlayer].id !== socket.id) { return; }
+            if (game.diceValue !== null) { return; }
+
+            const diceValue = randomIntFromInterval(1, 6);
+            game.diceValue = diceValue;
+
+            for (const socket in game.sockets) {
+                socket.emit("dice rolled", game);
+            }
+        });
+
+        socket.on("play row", (rowIndex) => {
+            if (rowIndex < 0 || rowIndex > 2) { return; }
+
+            const game = gamesBySocketsId[socket.id];
+
+            if (game?.sockets[game.currentPlayer].id !== socket.id) { return; }
+            if (game.diceValue === null) { return; }
+
+            if (game.state[game.currentPlayer][rowIndex].length >= 3) { return; }
+
+            game.state[game.currentPlayer][rowIndex].push(game.diceValue);
+
+            const otherPlayer = game.currentPlayer === 0 ? 1 : 0;
+
+            game.state[otherPlayer][rowIndex] = game.state[otherPlayer][rowIndex].filter(
+                (v) => v !== game.diceValue
+            );
+
+            game.diceValue = null;
+
+            if (game.state[game.currentPlayer].every((row) => row.length >= 3)) {
+                game.gameOver = true;
+            }
+
+            game.currentPlayer = otherPlayer;
+
+            for (const socket in game.sockets) {
+                socket.emit("row played", game, rowIndex);
             }
         });
     });
