@@ -8,6 +8,10 @@ function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function gameObjWithoutSockets(game) {
+    return { ...game, sockets: undefined };
+}
+
 const gamesById = {};
 const gamesBySocketsId = {};
 
@@ -27,7 +31,7 @@ module.exports.setUp = (io) => {
             gamesById[gameId] = game;
             gamesBySocketsId[socket.id] = game;
 
-            socket.emit("game created", game)
+            socket.emit("game created", gameObjWithoutSockets(game));
         });
 
         socket.on("join game", (gameId) => {
@@ -40,8 +44,8 @@ module.exports.setUp = (io) => {
 
             game.currentPlayer = randomIntFromInterval(0, 1);
 
-            for (const socket in game.sockets) {
-                socket.emit("game joined", game);
+            for (const socket of game.sockets) {
+                socket.emit("game joined", gameObjWithoutSockets(game));
             }
         });
 
@@ -54,8 +58,8 @@ module.exports.setUp = (io) => {
             const diceValue = randomIntFromInterval(1, 6);
             game.diceValue = diceValue;
 
-            for (const socket in game.sockets) {
-                socket.emit("dice rolled", game);
+            for (const socket of game.sockets) {
+                socket.emit("dice rolled", gameObjWithoutSockets(game));
             }
         });
 
@@ -85,8 +89,8 @@ module.exports.setUp = (io) => {
 
             game.currentPlayer = otherPlayer;
 
-            for (const socket in game.sockets) {
-                socket.emit("row played", game, rowIndex);
+            for (const socket of game.sockets) {
+                socket.emit("row played", gameObjWithoutSockets(game), rowIndex);
             }
         });
 
@@ -100,8 +104,8 @@ module.exports.setUp = (io) => {
             game.gameOver = false;
             game.state = Array.from({ length: 2 }, () => Array.from({ length: 3 }, () => []));
 
-            for (const socket in game.sockets) {
-                socket.emit("game restarted", game);
+            for (const socket of game.sockets) {
+                socket.emit("game restarted", gameObjWithoutSockets(game));
             }
         });
     });
