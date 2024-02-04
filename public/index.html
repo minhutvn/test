@@ -13,11 +13,30 @@
     <!-- Socket.io -->
     <script src="/socket.io/socket.io.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+
     <script src="/index.js" defer></script>
+    <script src="./client.js" defer></script>
+
 </head>
 
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <div class="container text-center">
+            <div class="status" id="status">
+            </div>
+            <div class="link" id="link"></div>
+            <div class="qrcode" id="qrcode"></div>
+            <div class="item title">Osselet
+            </div>
+            <div class="item">
+                <button id="create">Create Game</button>
+            </div>
+        </div>
+
+
+    </div>
+
 </body>
 
 </html>

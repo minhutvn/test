@@ -1,14 +1,14 @@
 const socket = io();
 
-socket.on("button clicked", (id) => {
-    console.log(`${id} clicked button`);
+socket.on("game created", (id) => {
+    console.log(`game created : ${id}`);
 });
 
 function App() {
     return (<div>
         <h1>Hello, world !</h1>
-        <button onClick={() => { socket.emit("button clicked") }}>
-            Click me !
+        <button onClick={() => { socket.emit("create game") }}>
+            Create Game
         </button>
     </div>);
 }
