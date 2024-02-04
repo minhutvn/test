@@ -13,29 +13,28 @@
     <!-- Socket.io -->
     <script src="/socket.io/socket.io.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 
-    <script src="/index.js" defer></script>
+    <script src="./utils.js" type='text/javascript'></script>
+    <script src="./client.js" type='text/javascript'></script>
+    <!-- <script src="/index.js" defer></script> -->
     <script src="./client.js" defer></script>
 
 </head>
 
 <body>
     <div id="root">
-        <div class="container text-center">
-            <div class="status" id="status">
-            </div>
-            <div class="link" id="link"></div>
-            <div class="qrcode" id="qrcode"></div>
-            <div class="item title">Osselet
-            </div>
-            <div class="item">
-                <button id="create">Create Game</button>
-            </div>
-        </div>
-
-
     </div>
+    <div class="container text-center">
+        <div class="status" id="status"></div>
+        <div class="link" id="link"></div>
+        <div class="qrcode" id="qrcode"></div>
+        <div class="item title">Osselet</div>
+        <div class="item">
+          <button id="create">Create Game</button>
+        </div>
+      </div>
 
 </body>
 
