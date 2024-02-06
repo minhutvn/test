@@ -219,8 +219,8 @@ module.exports.setUp = (io) => {
 
                 // add code check win
                 games[data.id].player2.turn = 2;
-
                 updateBoardopponent(games[data.id].player2, move , games[data.id].gameboard[2], data.value)
+
 
             }
 
@@ -233,6 +233,7 @@ module.exports.setUp = (io) => {
                 // add code check win
                 games[data.id].player1.turn = 2;
                 updateBoardopponent(games[data.id].player1, move, games[data.id].gameboard[1], data.value)
+
             }
             const dataNew = { game: games[data.id], tile: move, diceValue: data.value }
             socket.to(data.id).emit("moved", dataNew);
@@ -290,7 +291,10 @@ module.exports.setUp = (io) => {
 }
 
 function updateBoardopponent(player, move, gameBoard, value) {
-    const rowIndex = move / 3;
+    const rowIndex = Math.floor(move / 3);
+    console.log("player.index: "+ player.index + "gameBoard: "+ gameBoard);
+    console.log("value: "+ value + "rowIndex: " +rowIndex);
+
     if (gameBoard[rowIndex * 3] == value) gameBoard[rowIndex * 3] = 0;
     if (gameBoard[rowIndex * 3 + 1] == value) gameBoard[rowIndex * 3 + 1] = 0;
     if (gameBoard[rowIndex * 3 + 2] == value) gameBoard[rowIndex * 3 + 2] = 0;
