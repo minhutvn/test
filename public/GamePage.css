@@ -1,0 +1,406 @@
+@font-face {
+    font-family: tt-squares-regular;
+    src: url("./Assets/Fonts/tt-squares-regular.otf");
+}
+
+@font-face {
+    font-family: tt-squares-bold;
+    src: url("./Assets/Fonts/TTSquares-Bold.ttf");
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+.GameBody {
+    margin: 0;
+    font-family: tt-squares-regular;
+    background-color: #F3F3F3;
+    width: 100vw;
+    height: 100vh;
+}
+
+.non-clickable {
+    pointer-events: none;
+}
+
+.logo {
+    max-width: 450px;
+    height: auto;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* Player 1 Styles */
+
+.player1-section {
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 50px;
+    top: 15vh;
+}
+
+.player1-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.player1-logo img {
+    position: relative;
+    width: 90px;
+    margin: 0;
+    top: 40px;
+}
+
+.player1-score {
+    font-size: 20px;
+    font-family: tt-squares-regular;
+    color: #F3F3F3;
+    letter-spacing: .234rem;
+    padding: 10px;
+    display: grid;
+    align-items: center;
+    text-align: right;
+    margin-top: 0;
+    width: 70px;
+    height: 45px;
+    position: relative;
+    top: 10px;
+    background-image: url('./Assets/Images/Grey/Visual_Obj_5.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.player1-grid {
+    display: contents;
+}
+
+.player1-grid tr {
+    display: block;
+    margin-left: 50px;
+}
+
+.player1-grid td {
+    display: inline-flex;
+    margin: 5px;
+    width: 90px;
+    height: 90px;
+    align-items: center;
+    background-image: url('./Assets/Images/Grey/Grid_Cell.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.player1-grid img {
+    display: block;
+    margin: auto;
+    width: 75px;
+    height: max-content;
+}
+
+.player1-grid td:last-child {
+    display: inline-flex;
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    background: None;
+    transform: rotate(180deg);
+}
+
+.player1-radio-label {
+    margin-left: 20px;
+}
+
+.player1-radio-input {
+    margin-right: 0;
+}
+
+.player1-radio-custom {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+}
+
+.player1-radio-custom input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.player1-checkmark {
+    display: flex;
+    height: 30px;
+    width: 330px;
+    background: None;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.player1-radio-custom input:checked~.player1-checkmark {
+    background-image: url('./Assets/Images/Grey/Arrow.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.player1-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.player1-radio-custom input:checked~.player1-checkmark:after {
+    display: block;
+}
+
+.player1-radio-custom .player1-checkmark:after {
+
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+}
+
+
+/* Gameplay Styles */
+
+.game-section {
+    display: block;
+    position: relative;
+    top: 15vh;
+    height: max-content;
+    margin: auto;
+}
+
+.game-button {
+    font-size: 17px;
+    font-family: tt-squares-bold;
+    color: #282828;
+    letter-spacing: .234rem;
+    display: block;
+    bottom: 20px;
+    right: 20px;
+    width: 200px;
+    height: 70px;
+    margin: auto;
+    background-image: url('./Assets/Images/Orange/Visual_Obj_6.png');
+    background-size: contain;
+    border: none;
+    cursor: pointer;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.random-dice {
+    display: flex;
+    align-items: center;
+}
+
+.random-dice img {
+    position: relative;
+    width: 90px;
+    margin: auto;
+    top: 30px;
+}
+
+/* Player 2 Styles */
+
+.player2-section {
+    display: flex;
+    align-items: center;
+    position: relative;
+    right: 50px;
+    top: 15vh;
+}
+
+.player2-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.player2-logo img {
+    position: relative;
+    width: 90px;
+    margin: 0;
+    top: 40px;
+}
+
+.player2-score {
+    font-size: 20px;
+    font-family: tt-squares-bold;
+    color: #F3F3F3;
+    letter-spacing: .234rem;
+    padding: 10px;
+    display: grid;
+    align-items: center;
+    text-align: right;
+    margin-top: 0;
+    width: 70px;
+    height: 45px;
+    position: relative;
+    top: 10px;
+    background-image: url('./Assets/Images/Orange/Visual_Obj_5.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.player2-grid {
+    display: contents;
+}
+
+.player2-grid tr {
+    display: block;
+    margin-right: 50px;
+}
+
+.player2-grid td {
+    display: inline-flex;
+    margin: 5px;
+    width: 90px;
+    height: 90px;
+    align-items: center;
+    background-image: url('./Assets/Images/Orange/Grid_Cell.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.player2-grid img {
+    display: block;
+    margin: auto;
+    width: 75px;
+    height: max-content;
+}
+
+.player2-grid td:first-child {
+    display: inline-flex;
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    background: None;
+}
+
+.player2-radio-label {
+    margin-left: 20px;
+}
+
+.player2-radio-input {
+    margin-right: 0;
+}
+
+.player2-radio-custom {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+}
+
+.player2-radio-custom input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.player2-checkmark {
+    display: flex;
+    height: 30px;
+    width: 330px;
+    background: None;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.player2-radio-custom input:checked~.player2-checkmark {
+    background-image: url('./Assets/Images/Orange/Arrow.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.player2-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.player2-radio-custom input:checked~.player2-checkmark:after {
+    display: block;
+}
+
+.player2-radio-custom .player2-checkmark:after {
+
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+}
+
+
+.help-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 70px;
+    height: 70px;
+    background-image: url('./Assets/Images/Orange/Help_Button.png');
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.session-id {
+    display: grid;
+    align-items: center;
+    text-align: center;
+    font-size: 15px;
+    font-family: tt-squares-bold;
+    color: #282828;
+    letter-spacing: .234rem;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
+    height: 60px;
+    background-image: url('./Assets/Images/Grey/Visual_Obj_3.png');
+    background-size: 100%;
+    border: none;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+
+.top-right-image {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 300px;
+    clip-path: inset(0px 0px 120px 120px);
+}

@@ -20,6 +20,7 @@ class Player {
         /// Whether it is the players turn
         this.turn = turn;
         this.index = index;
+        this.score = 0;
     }
 
     /**
@@ -50,8 +51,9 @@ class Game {
         this.player2 = null;
         /// Tic-tac-toe gameboard
         this.gameboard = {
-            1: [0,0,0,0,0,0,0,0,0], 2:[0,0,0,0,0,0,0,0,0]
+            1: [0, 0, 0, 0, 0, 0, 0, 0, 0], 2: [0, 0, 0, 0, 0, 0, 0, 0, 0]
         };
+        this.diceValue = 0;
     }
 
     /**
@@ -164,14 +166,17 @@ module.exports.setUp = (io) => {
                 // Emit data to first player.
                 socket.to(gameID).emit('start', {
                     id: gameID, gameboard: games[gameID].gameboard,
-                    player: games[gameID].player1
+                    player: games[gameID].player1, diceValue:games[gameID]['diceValue'],
+                    game : games[gameID]
                 });
                 console.log("emitted start")
 
                 // Emit data to second player.
                 socket.emit("start", {
                     id: gameID, gameboard: games[gameID].gameboard,
-                    player: games[gameID].player2
+                    player: games[gameID].player2, diceValue:games[gameID]['diceValue'],
+                    game : games[gameID]
+
                 });
 
             } else {
@@ -185,40 +190,51 @@ module.exports.setUp = (io) => {
 
             // if (game?.sockets[game.currentPlayer].id !== socket.id) { return; }
             // if (game.diceValue !== null) { return; }
+            const game = games[data.id];
+            const index = data.player.index;
+            if (index == 1) {
+                game.player1.turn = 1;
+            }
+            if (index == 2) {
+                game.player2.turn = 1;
+            }
 
             const diceValue = randomIntFromInterval(1, 6);
             // game.diceValue = diceValue;
-            data.diceValue = diceValue;
-            
-            socket.to(data.id).emit("dice rolled", data);
-            socket.emit("dice rolled", data);
+            // data.diceValue = diceValue;
+            game.diceValue = diceValue;
+            const dataNew = { game: games[data.id], diceValue: diceValue }
+            console.log('dice rolled' + dataNew.toString());
+            socket.to(data.id).emit("dice rolled", dataNew);
+            socket.emit("dice rolled", dataNew);
         });
 
         socket.on("move", (data) => {
+            console.log('move: '+ data.toString());
             const move = data.move;
-            if (move > 0) { // player 1
-                games[data.id].gameboard[1][move-1] = data.value;
+            if (data.boardIndex == 1) { // player 1
+                games[data.id].gameboard[data.boardIndex][move] = data.value;
                 games[data.id].player1.turn = 0;
                 games[data.id].player1.score = games[data.id].gameboard[1].reduce((a, b) => a + b, 0);
 
                 // add code check win
                 games[data.id].player2.turn = 2;
 
-                updateBoardopponent(games[data.id].player2,move-1, games[data.id].gameboard[2], data.value)
+                updateBoardopponent(games[data.id].player2, move , games[data.id].gameboard[2], data.value)
 
-            } 
+            }
 
-            
-            if (move < 0) { // player 2
-                games[data.id].gameboard[2][-move-1] = data.value;
+
+            if (data.boardIndex == 2) { // player 2
+                games[data.id].gameboard[2][move] = data.value;
                 games[data.id].player2.turn = 0;
                 games[data.id].player2.score = games[data.id].gameboard[2].reduce((a, b) => a + b, 0);
 
                 // add code check win
                 games[data.id].player1.turn = 2;
-                updateBoardopponent(games[data.id].player1,-move-1, games[data.id].gameboard[1], data.value)
-            } 
-            const dataNew = {game : games[data.id], tile: move, diceValue: data.value}
+                updateBoardopponent(games[data.id].player1, move, games[data.id].gameboard[1], data.value)
+            }
+            const dataNew = { game: games[data.id], tile: move, diceValue: data.value }
             socket.to(data.id).emit("moved", dataNew);
             console.log(dataNew)
             socket.emit("moved", dataNew);
@@ -273,11 +289,11 @@ module.exports.setUp = (io) => {
     });
 }
 
-function updateBoardopponent(player,move, gameBoard, value){
-    const rowIndex = move/3;
-    if(gameBoard[rowIndex*3] == value) gameBoard[rowIndex*3] = 0;
-    if(gameBoard[rowIndex*3+1] == value) gameBoard[rowIndex*3+1] = 0;
-    if(gameBoard[rowIndex*3+2] == value) gameBoard[rowIndex*3+2] = 0;
+function updateBoardopponent(player, move, gameBoard, value) {
+    const rowIndex = move / 3;
+    if (gameBoard[rowIndex * 3] == value) gameBoard[rowIndex * 3] = 0;
+    if (gameBoard[rowIndex * 3 + 1] == value) gameBoard[rowIndex * 3 + 1] = 0;
+    if (gameBoard[rowIndex * 3 + 2] == value) gameBoard[rowIndex * 3 + 2] = 0;
     player.score = gameBoard.reduce((a, b) => a + b, 0);
 
 }
