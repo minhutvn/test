@@ -1,0 +1,92 @@
+@font-face {
+    font-family: tt-squares-regular;
+    src: url("./Assets/Fonts/tt-squares-regular.otf");
+}
+
+@font-face {
+    font-family: tt-squares-bold;
+    src: url("./Assets/Fonts/TTSquares-Bold.ttf");
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+.HomeBody {
+    margin: 0;
+    padding: 0;
+    font-family: tt-squares-regular;
+    background-color: #282828;
+    width: 100vw;
+    height: 100vh;
+}
+
+.logo {
+    max-width: 450px;
+    height: auto;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.homePageButton {
+    padding: 0;
+    font-size: 20px;
+    font-family: tt-squares-bold;
+    color: #282828;
+    letter-spacing: .234rem;
+    width: 500px;
+    height: 90px;
+    background-image: url('./Assets/Images/Orange/Visual_Obj_4.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.help-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 70px;
+    height: 70px;
+    background-image: url('./Assets/Images/Orange/Help_Button.png');
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.top-left-image {
+    position: absolute;
+    top: -120px;
+    left: -120px;
+    width: 300px; 
+    height: auto;
+}
+
+.center-bottom-image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px; 
+    height: 150px;
+    filter: brightness(75%);
+}
