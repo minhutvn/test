@@ -212,6 +212,8 @@ module.exports.setUp = (io) => {
         socket.on("move", (data) => {
             console.log('move: '+ data.toString());
             const move = data.move;
+            var dataNew = {  tile: move, diceValue: data.value , winner : 0}
+
             if (data.boardIndex == 1) { // player 1
                 games[data.id].gameboard[data.boardIndex][move] = data.value;
                 games[data.id].player1.turn = 0;
@@ -220,7 +222,9 @@ module.exports.setUp = (io) => {
                 // add code check win
                 games[data.id].player2.turn = 2;
                 updateBoardopponent(games[data.id].player2, move , games[data.id].gameboard[2], data.value)
-
+                if(matchWinCondition(games[data.id].gameboard[1])){
+                    dataNew.winner = data.boardIndex;
+                }
 
             }
 
@@ -234,8 +238,11 @@ module.exports.setUp = (io) => {
                 games[data.id].player1.turn = 2;
                 updateBoardopponent(games[data.id].player1, move, games[data.id].gameboard[1], data.value)
 
+                if(matchWinCondition(games[data.id].gameboard[2])){
+                    dataNew.winner = data.boardIndex;
+                }
             }
-            const dataNew = { game: games[data.id], tile: move, diceValue: data.value }
+            dataNew.game= games[data.id];
             socket.to(data.id).emit("moved", dataNew);
             console.log(dataNew)
             socket.emit("moved", dataNew);
@@ -288,6 +295,13 @@ module.exports.setUp = (io) => {
         //     }
         // });
     });
+}
+
+function matchWinCondition(gameBoard){
+    for(let i = 0; i< 9; i++){
+        if(gameBoard[i]== 0) return false;
+    }
+    return true;
 }
 
 function updateBoardopponent(player, move, gameBoard, value) {
