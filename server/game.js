@@ -217,7 +217,8 @@ module.exports.setUp = (io) => {
             if (data.boardIndex == 1) { // player 1
                 games[data.id].gameboard[data.boardIndex][move] = data.value;
                 games[data.id].player1.turn = 0;
-                games[data.id].player1.score = games[data.id].gameboard[1].reduce((a, b) => a + b, 0);
+                // games[data.id].player1.score = games[data.id].gameboard[1].reduce((a, b) => a + b, 0);
+                games[data.id].player1.score = calculateBoard(games[data.id].gameboard[1]);
 
                 // add code check win
                 games[data.id].player2.turn = 2;
@@ -232,7 +233,7 @@ module.exports.setUp = (io) => {
             if (data.boardIndex == 2) { // player 2
                 games[data.id].gameboard[2][move] = data.value;
                 games[data.id].player2.turn = 0;
-                games[data.id].player2.score = games[data.id].gameboard[2].reduce((a, b) => a + b, 0);
+                games[data.id].player2.score = calculateBoard(games[data.id].gameboard[2]);
 
                 // add code check win
                 games[data.id].player1.turn = 2;
@@ -312,6 +313,36 @@ function updateBoardopponent(player, move, gameBoard, value) {
     if (gameBoard[rowIndex * 3] == value) gameBoard[rowIndex * 3] = 0;
     if (gameBoard[rowIndex * 3 + 1] == value) gameBoard[rowIndex * 3 + 1] = 0;
     if (gameBoard[rowIndex * 3 + 2] == value) gameBoard[rowIndex * 3 + 2] = 0;
-    player.score = gameBoard.reduce((a, b) => a + b, 0);
+    player.score = calculateBoard(gameBoard);
 
 }
+function calculateBoard(board){
+    console.log('board:' + board)
+    let sum1 = calculateRow(board.slice(0,3));
+    let sum2 = calculateRow(board.slice(3,6));
+    let sum3 = calculateRow(board.slice(6,9));
+    return sum1+ sum2 + sum3;
+}
+
+function calculateRow(diceValues) {
+    console.log('diceValues:' + diceValues)
+
+    // Create an object to store the count of each dice value
+    const diceCount = {};
+  
+    // Calculate the count of each dice value
+    diceValues.forEach(value => {
+      if (diceCount[value]) {
+        diceCount[value]++;
+      } else {
+        diceCount[value] = 1;
+      }
+    });
+  
+    // Calculate the sum based on the specified rule
+    let sum = 0;
+    for (const value in diceCount) {
+        sum += (parseInt(value) * diceCount[value]);
+    }
+    return sum;
+  }
