@@ -37,8 +37,21 @@ header {
 
 .button-container {
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 30px;
+    margin: auto;
+}
+
+
+.button-container p {
+  text-align: center;
+  padding: 0;
+  font-size: 12px;
+  font-family: tt-squares-bold;
+  color: #f3f3f3;
+  letter-spacing: .234rem;
+  line-height: 200%;
 }
 
 .homePageButton {
@@ -57,20 +70,56 @@ header {
     cursor: pointer;
 }
 
-.help-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 70px;
-    height: 70px;
-    background-image: url('./Assets/Images/Orange/Help_Button.png');
-    background-size: cover;
-    border: none;
-    cursor: pointer;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    border-color: transparent;
+.helpButton-container {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  display: inline-flex;
+  text-align: left;
+  overflow: hidden;
+  transition: all 0.1s ease;
+}
+
+.helpButton-container button{
+  width: 70px;
+  height: 70px;
+  background-image: url('./Assets/Images/Orange/Help_Button.png');
+  background-size: 100% 100%;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.helpButton-container p {
+  padding: 10px;
+  width: 250px;
+  font-size: 14px;
+  font-family: tt-squares-regular;
+  color: #f3f3f3;
+  line-height: 120%;
+  visibility: hidden;
+}
+
+.helpButton-container:hover {
+  width: 280px;
+  height: 70vh;
+  background-image: url('./Assets/Images/Orange/Visual_Obj_8.png');
+  background-size: 100% 100%;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.helpButton-container:hover button{
+  visibility: hidden;
+}
+
+.helpButton-container:hover p{
+  visibility: visible;
 }
 
 .top-left-image {
@@ -126,7 +175,7 @@ header {
     color: #f3f3f3;
     letter-spacing: .234rem;
     line-height: 200%;
-    width: 150px;
+    width: 250px;
     height: 150px;
 }
 

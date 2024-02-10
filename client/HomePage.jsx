@@ -36,6 +36,9 @@ const HomePage = (props) => {
         <img src="/Assets/Logos/Logo_Light.png" alt="Logo" className="logo"></img>
       </header>
 
+      <img src='/Assets/Images/Orange/Visual_Obj_1.png' className="top-left-image" />
+      <img src='/Assets/Images/Orange/Visual_Obj_7.png' className="center-bottom-image" />
+
       <main className="main">
 
         {!state ? (
@@ -49,15 +52,14 @@ const HomePage = (props) => {
                 <span>Create Session</span>
               </button>
               <div className="createInput-wrapper">
-                  <input type="text" placeholder="Enter your pseudo"></input>
+                  <input type="text" placeholder="Enter your e-mail"></input>
               </div>
             </div>
 
             <div className="joinButton-container">
               <button className="homePageButton" id="joinButton" onClick={() => {
-                  const org = window.location.href 
-                  console.log(org)
-                  // window.location.href = org + "?gameId=" + document.getElementById('joinInput').value;
+                  const org = window.location.href
+                  window.location.href = org + "?gameId=" + document.getElementById('joinInput').value;
                 }}> 
                 <span>Join Session</span>
               </button>
@@ -66,13 +68,19 @@ const HomePage = (props) => {
               </div>
             </div>
 
+            <p>! Please enter your unique e-mail when creating sessions <br/> to help us analyze game plays...</p>
+
           </div>
         ) : (
           <div className="status" id="status">
             Session ID - {gameId}
 
             <div className="status-sub" id="status-sub">
-              <span className="waiting-player" id="waiting-player">Waiting for player...</span>
+              <span className="waiting-player" id="waiting-player">
+                Share the session ID for others to join 
+                <br/><br/><br/>
+                Waiting for player...
+              </span>
 
               <div className="QR-link" id="QR-link"></div>
               {/* <QRCodeSVG value={url} /> */}
@@ -86,10 +94,31 @@ const HomePage = (props) => {
 
       </main>
 
-      <button className="help-button"></button>
+      <div className="helpButton-container">
+        <button>
+          <p>
+            <b>Game Rules</b>
 
-      <img src='/Assets/Images/Orange/Visual_Obj_1.png' className="top-left-image" />
-      <img src='/Assets/Images/Orange/Visual_Obj_7.png' className="center-bottom-image" />
+            <br/><br/>
+
+            The game is played on a board with two grids for each player, each grid having 3 rows and 3 columns. 
+            Players roll a dice on their turn and put the number they roll into one of the rows of their grid. 
+            The sum of the dice values in each player's grid is their score. The game finishes when one player 
+            fills their grid, and the player with the highest score wins.
+
+            <br/><br/>
+
+            In each row, a player can put a maximum of 3 dice. If a player puts more than one dice with the 
+            same value in a row, their sum is multiplied by the number of dice. For instance, if a row has 
+            3, 2, 3, then the score is calculated as (3 + 3) * 2 + 2 = 14.
+
+            <br/><br/>
+
+            When a player puts a dice in a row, any dice with the same value in the opponent's corresponding 
+            row are taken out.
+          </p>
+        </button>
+      </div>
 
     </div>
   );

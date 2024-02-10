@@ -100,6 +100,7 @@ header {
     background-repeat: no-repeat;
     background-color: transparent;
     border-color: transparent;
+    cursor: pointer;
 }
 
 .player1-grid img {
@@ -142,7 +143,7 @@ header {
 .player1-checkmark {
     display: flex;
     height: 30px;
-    width: 330px;
+    width: 30px;
     background: None;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -284,6 +285,7 @@ header {
     background-repeat: no-repeat;
     background-color: transparent;
     border-color: transparent;
+    cursor: pointer;
 }
 
 .player2-grid img {
@@ -325,7 +327,7 @@ header {
 .player2-checkmark {
     display: flex;
     height: 30px;
-    width: 330px;
+    width: 30px;
     background: None;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -359,23 +361,6 @@ header {
     background: transparent;
 }
 
-
-.help-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 70px;
-    height: 70px;
-    background-image: url('./Assets/Images/Orange/Help_Button.png');
-    background-size: cover;
-    border: none;
-    cursor: pointer;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    border-color: transparent;
-}
-
 .session-id {
     display: grid;
     align-items: center;
@@ -403,4 +388,66 @@ header {
     right: 0px;
     width: 300px;
     clip-path: inset(0px 0px 120px 120px);
+}
+
+/* Winner Styles */
+
+.winner-section {
+    display: block;
+    position: relative;
+    top: 15vh;
+    height: max-content;
+    margin: auto;
+}
+
+#winner1-section {
+    font-size: 17px;
+    font-family: tt-squares-bold;
+    color: #282828;
+    letter-spacing: .234rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    height: 70px;
+    margin: auto;
+    background-image: url('./Assets/Images/Grey/Visual_Obj_6.png');
+    background-size: contain;
+    border: none;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+#winner2-section {
+    font-size: 17px;
+    font-family: tt-squares-bold;
+    color: #FF9040;
+    letter-spacing: .234rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    height: 70px;
+    margin: auto;
+    background-image: url('./Assets/Images/Orange/Visual_Obj_6.png');
+    background-size: contain;
+    border: none;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.winner-logo {
+    display: flex;
+    align-items: center;
+}
+
+.winner-logo img {
+    position: relative;
+    width: 100px;
+    margin: auto;
+    top: 30px;
 }
