@@ -342,7 +342,9 @@ function calculateRow(diceValues) {
     // Calculate the sum based on the specified rule
     let sum = 0;
     for (const value in diceCount) {
-        sum += (parseInt(value) * diceCount[value]);
+        sum += (parseInt(value) * diceCount[value] * diceCount[value]);
     }
+    console.log('diceCount: ' + diceCount.toString());
+    console.log('sum: ' + sum);
     return sum;
   }

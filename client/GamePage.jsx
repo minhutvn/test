@@ -230,7 +230,7 @@ const GamePage = (props) => {
 
         <button className="help-button"></button>
 
-        <span className="session-id">Session ID - IDX3G45</span>
+        <span className="session-id">Session ID - {game.id}</span>
 
         <img src='/Assets/Images/Orange/Visual_Obj_1.png' className="top-right-image" />
 
