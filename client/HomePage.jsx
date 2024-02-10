@@ -4,10 +4,13 @@
 const HomePage = (props) => {
   const [state, setState] = React.useState(0);
   const [url, setUrl] = React.useState('');
+  const [gameId, setGameId] = React.useState('');
 
   props.socket.on('game created', function (data) {
     // Show the GameID
     const url = window.location.href + "?gameId=" + data.id;
+    const gameId = data.id;
+    setGameId(gameId);
     setUrl(url);
     // document.getElementById("#status").html(`Send this link to other player:`);
     // $("#link").text(url);
@@ -37,18 +40,45 @@ const HomePage = (props) => {
 
         {!state ? (
           <div className="button-container">
-            <button className="homePageButton" onClick={() => {
-              setState(1);
-              props.socket.emit("create game")
-            }}>Create Session</button>
-            <button className="homePageButton" id="join button">Join Session</button>
-            <button className="homePageButton">Play Session</button>
+
+            <div className="createButton-container">
+              <button className="homePageButton" id="createButton" onClick={() => {
+                  setState(1);
+                  props.socket.emit("create game")
+                }}> 
+                <span>Create Session</span>
+              </button>
+              <div className="createInput-wrapper">
+                  <input type="text" placeholder="Enter your pseudo"></input>
+              </div>
+            </div>
+
+            <div className="joinButton-container">
+              <button className="homePageButton" id="joinButton" onClick={() => {
+                  const org = window.location.href 
+                  console.log(org)
+                  // window.location.href = org + "?gameId=" + document.getElementById('joinInput').value;
+                }}> 
+                <span>Join Session</span>
+              </button>
+              <div className="joinInput-wrapper">
+                  <input type="text" placeholder="Enter session ID" id="joinInput"></input>
+              </div>
+            </div>
+
           </div>
         ) : (
-          <div className="container text-center">
-            <div className="status" id="status">{url}</div>
-            <div className="link" id="link"></div>
-            {/* <QRCodeSVG value={url} /> */}
+          <div className="status" id="status">
+            Session ID - {gameId}
+
+            <div className="status-sub" id="status-sub">
+              <span className="waiting-player" id="waiting-player">Waiting for player...</span>
+
+              <div className="QR-link" id="QR-link"></div>
+              {/* <QRCodeSVG value={url} /> */}
+            </div>
+
+            <div className="loader"></div>
           </div>
         )}
 
