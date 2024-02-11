@@ -5,6 +5,7 @@ const HomePage = (props) => {
   const [state, setState] = React.useState(0);
   const [url, setUrl] = React.useState('');
   const [gameId, setGameId] = React.useState('');
+  const [email, setEmail] = React.useState('');
 
   props.socket.on('game created', function (data) {
     // Show the GameID
@@ -12,6 +13,10 @@ const HomePage = (props) => {
     const gameId = data.id;
     setGameId(gameId);
     setUrl(url);
+    props.socket.emit("host email", {
+      email: email,
+      gameId: gameId
+  });
     // document.getElementById("#status").html(`Send this link to other player:`);
     // $("#link").text(url);
     // $('#link').show();
@@ -47,12 +52,14 @@ const HomePage = (props) => {
             <div className="createButton-container">
               <button className="homePageButton" id="createButton" onClick={() => {
                   setState(1);
-                  props.socket.emit("create game")
+                  setEmail(document.getElementById('email').value);
+                  const email = document.getElementById('email').value;
+                  props.socket.emit("create game");
                 }}> 
                 <span>Create Session</span>
               </button>
               <div className="createInput-wrapper">
-                  <input type="text" placeholder="Enter your e-mail"></input>
+                  <input type="text" placeholder="Enter your e-mail" id='email'></input>
               </div>
             </div>
 
@@ -60,6 +67,10 @@ const HomePage = (props) => {
               <button className="homePageButton" id="joinButton" onClick={() => {
                   const org = window.location.href
                   window.location.href = org + "?gameId=" + document.getElementById('joinInput').value;
+                  props.socket.emit("join email", {
+                    email: document.getElementById('email').value,
+                    joinId : document.getElementById('joinInput').value
+                });
                 }}> 
                 <span>Join Session</span>
               </button>

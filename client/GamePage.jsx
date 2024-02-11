@@ -7,6 +7,7 @@ const GamePage = (props) => {
   const [turn, setTurn] = React.useState(player.turn);
   const [board, setBoard] = React.useState(game.gameboard);
   const [winner, setWinner] = React.useState(0);
+
   function userClick(e) {
     let playerIndex = e.currentTarget.getAttribute('playerindex');
     let cellIndex = e.currentTarget.getAttribute('cellindex');
@@ -262,7 +263,6 @@ const GamePage = (props) => {
         <span className="session-id">Session ID - {game.id}</span>
 
         <img src='/Assets/Images/Orange/Visual_Obj_1.png' className="top-right-image" />
-
       </div>
   );
 

@@ -14,7 +14,7 @@ var player = undefined;
 function App() {
     const [stared, setStarted] = React.useState(false);
     const gameId = getGameId();
-    console.log(gameId)
+    console.log(gameId);
     if (gameId) {
         socket.emit('join game', { gameID: gameId });
         console.log("gameID: " + gameId);

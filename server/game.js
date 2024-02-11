@@ -1,3 +1,4 @@
+const fs = require('fs');
 const { randomBytes } = require("node:crypto");
 
 function generateGameId() {
@@ -133,8 +134,8 @@ class Game {
 const gamesById = {};
 const gamesBySocketsId = {};
 
+const end_data = fs.createWriteStream("finished.csv", { flags: "a" });
 var games = {};
-
 module.exports.setUp = (io) => {
     io.on("connection", (socket) => {
         socket.on("create game", () => {
@@ -148,7 +149,7 @@ module.exports.setUp = (io) => {
             socket.join(gameId);
             // socket.lobby = gameId;
             socket.emit('game created', {
-                id: gameId
+                id: gameId,
             });
         });
 
@@ -225,6 +226,9 @@ module.exports.setUp = (io) => {
                 updateBoardopponent(games[data.id].player2, move , games[data.id].gameboard[2], data.value)
                 if(matchWinCondition(games[data.id].gameboard[1])){
                     dataNew.winner = data.boardIndex;
+                    const time = new Date();
+                    end_data.write(`${data.id},${time}\n`);
+                   
                 }
 
             }
@@ -238,11 +242,13 @@ module.exports.setUp = (io) => {
                 // add code check win
                 games[data.id].player1.turn = 2;
                 updateBoardopponent(games[data.id].player1, move, games[data.id].gameboard[1], data.value)
-
                 if(matchWinCondition(games[data.id].gameboard[2])){
                     dataNew.winner = data.boardIndex;
+                    const time = new Date();
+                    end_data.write(`${data.id},${time}\n`);
                 }
             }
+
             dataNew.game= games[data.id];
             socket.to(data.id).emit("moved", dataNew);
             console.log(dataNew)
@@ -304,7 +310,6 @@ function matchWinCondition(gameBoard){
     }
     return true;
 }
-
 function updateBoardopponent(player, move, gameBoard, value) {
     const rowIndex = Math.floor(move / 3);
     console.log("player.index: "+ player.index + "gameBoard: "+ gameBoard);
