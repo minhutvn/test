@@ -1,0 +1,312 @@
+@font-face {
+    font-family: tt-squares-regular;
+    src: url("./Assets/Fonts/tt-squares-regular.otf");
+}
+
+@font-face {
+    font-family: tt-squares-bold;
+    src: url("./Assets/Fonts/TTSquares-Bold.ttf");
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+.HomeBody {
+    margin: 0;
+    padding: 0;
+    font-family: tt-squares-regular;
+    background-color: #282828;
+    width: 100vw;
+    height: 100vh;
+}
+
+.logo {
+    max-width: 450px;
+    height: auto;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    margin: auto;
+}
+
+
+.button-container p {
+  text-align: center;
+  padding: 0;
+  font-size: 12px;
+  font-family: tt-squares-bold;
+  color: #f3f3f3;
+  letter-spacing: .234rem;
+  line-height: 200%;
+}
+
+.homePageButton {
+    padding: 0;
+    font-size: 20px;
+    font-family: tt-squares-bold;
+    color: #282828;
+    letter-spacing: .234rem;
+    width: 500px;
+    height: 90px;
+    background-image: url('./Assets/Images/Orange/Visual_Obj_4.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.helpButton-container {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  display: inline-flex;
+  text-align: left;
+  overflow: hidden;
+  transition: all 0.1s ease;
+}
+
+.helpButton-container button{
+  width: 70px;
+  height: 70px;
+  background-image: url('./Assets/Images/Orange/Help_Button.png');
+  background-size: 100% 100%;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.helpButton-container p {
+  padding: 10px;
+  width: 250px;
+  font-size: 14px;
+  font-family: tt-squares-regular;
+  color: #f3f3f3;
+  line-height: 120%;
+  visibility: hidden;
+}
+
+.helpButton-container:hover {
+  width: 280px;
+  height: 70vh;
+  background-image: url('./Assets/Images/Orange/Visual_Obj_8.png');
+  background-size: 100% 100%;
+  border: none;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.helpButton-container:hover button{
+  visibility: hidden;
+}
+
+.helpButton-container:hover p{
+  visibility: visible;
+}
+
+.top-left-image {
+    position: absolute;
+    top: -120px;
+    left: -120px;
+    width: 300px; 
+    height: auto;
+}
+
+.center-bottom-image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px; 
+    height: 150px;
+    filter: brightness(75%);
+}
+
+.status {
+    display: grid;
+    text-align: center;
+    padding-top: 25px;
+    margin-top: 25px;
+    font-size: 17px;
+    font-family: tt-squares-bold;
+    color: #f3f3f3;
+    letter-spacing: .234rem;
+    width: 450px;
+    height: 250px;
+    background-image: url('./Assets/Images/Orange/Visual_Obj_8.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-color: transparent;
+
+}
+
+.status-sub {
+    display: inline-flex;
+    align-items: center;
+}
+
+.waiting-player {
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 25px;
+    font-size: 13px;
+    font-family: tt-squares-bold;
+    color: #f3f3f3;
+    letter-spacing: .234rem;
+    line-height: 200%;
+    width: 250px;
+    height: 150px;
+}
+
+.loader {
+    width: 30px;
+    height: 30px;
+    color: #FF9040;
+    display: grid;
+    animation: l38-0 6s infinite linear;
+    position: relative;
+    right: 30px;
+    top: -7px;
+    margin-left: auto;
+  }
+  .loader:before,
+  .loader:after {
+    content: "";
+    grid-area: 1/1;
+  }
+  .loader:before {
+    clip-path: polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);
+    background: conic-gradient(from -30deg,#0000 60deg,currentColor 0);
+  }
+  .loader:after {
+    background: conic-gradient(from -30deg,currentColor 60deg,#0000 0);
+    animation: l38 0.5s infinite alternate;
+  }
+  @keyframes l38-0 {
+    0%,16.66%     {transform: rotate(0deg)}
+    16.67%,33.33% {transform: rotate(60deg)}
+    33.34%,50%    {transform: rotate(120deg)}
+    50.1%,66.66%  {transform: rotate(180deg)}
+    66.67%,83.33% {transform: rotate(240deg)}
+    83.34%,100%   {transform: rotate(300deg)}
+  }
+  @keyframes l38 {
+    100%  {transform: translateY(-5px)}
+  }
+
+
+  .createButton-container{
+    display: inline-flex;
+  }
+
+  #createButton {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .createButton-container:hover #createButton{
+    width: 250px;
+  }
+
+  .createInput-wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 0px;
+    height: 90px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .createInput-wrapper input[type="text"] {
+    padding: 0;
+    font-size: 10px;
+    font-family: tt-squares-regular;
+    color: #FF9040;
+    letter-spacing: .234rem;
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+    border: none;
+    background-color: transparent;
+    box-sizing: border-box;
+    font-size: inherit;
+    outline: none;
+  }
+
+  .createButton-container:hover .createInput-wrapper {
+    width: 250px;
+  }
+
+  .createButton-container:hover .createInput-wrapper input[type="text"] {
+    width: 100%;
+  }
+
+
+  .joinButton-container{
+    display: inline-flex;
+  }
+
+  #joinButton {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .joinButton-container:hover #joinButton{
+    width: 250px;
+  }
+
+  .joinInput-wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 0px;
+    height: 90px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .joinInput-wrapper input[type="text"] {
+    padding: 0;
+    font-size: 10px;
+    font-family: tt-squares-regular;
+    color: #FF9040;
+    letter-spacing: .234rem;
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+    border: none;
+    background-color: transparent;
+    box-sizing: border-box;
+    font-size: inherit;
+    outline: none;
+  }
+
+  .joinButton-container:hover .joinInput-wrapper {
+    width: 250px;
+  }
+
+  .joinButton-container:hover .joinInput-wrapper input[type="text"] {
+    width: 100%;
+  }

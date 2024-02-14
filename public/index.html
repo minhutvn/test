@@ -9,14 +9,21 @@
     <!-- React scripts -->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <!-- Socket.io -->
     <script src="/socket.io/socket.io.js"></script>
 
-    <script src="/index.js" defer></script>
+    <script type="module" src="/index.js" defer></script>
+    <script type="module" src="/HomePage.js" defer></script>
+    <script type="module" src="/GamePage.js" defer></script>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./HomePage.css" type="text/css" />
+    <link rel="stylesheet" href="./GamePage.css" type="text/css" />
 </head>
 
-<body>
+<body style="margin: 0;">
     <div id="root"></div>
 </body>
 
