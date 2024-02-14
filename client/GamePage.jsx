@@ -118,9 +118,9 @@ const GamePage = (props) => {
             <table className="player1-grid">
               <tbody>
                 <tr>
-                  <td playerindex='1' cellindex='0' onClick={(e) => { userClick(e); }}><img src={board['1'][0] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][0] + ".png"}></img></td>
-                  <td playerindex='1' cellindex='1' onClick={(e) => { userClick(e); }}><img src={board['1'][1] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][1] + ".png"}></img></td>
-                  <td playerindex='1' cellindex='2' onClick={(e) => { userClick(e); }} ><img src={board['1'][2] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][2] + ".png"}></img></td>
+                  <td className={board['1'][0] == 0 ? "clickable" : "non-clickable"} playerindex='1' cellindex='0' onClick={(e) => { userClick(e); }}><img src={board['1'][0] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][0] + ".png"}></img></td>
+                  <td className={board['1'][1] == 0 ? "clickable" : "non-clickable"} playerindex='1' cellindex='1' onClick={(e) => { userClick(e); }}><img src={board['1'][1] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][1] + ".png"}></img></td>
+                  <td className={board['1'][2] == 0 ? "clickable" : "non-clickable"} playerindex='1' cellindex='2' onClick={(e) => { userClick(e); }} ><img src={board['1'][2] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][2] + ".png"}></img></td>
                   <td>
                     <label className="player1-radio-label">
                       <span className="player1-radio-custom">
@@ -131,9 +131,9 @@ const GamePage = (props) => {
                   </td>
                 </tr>
                 <tr>
-                  <td playerindex='1' cellindex='3' onClick={(e) => { userClick(e); }}><img src={board['1'][3] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][3] + ".png"}></img></td>
-                  <td playerindex='1' cellindex='4' onClick={(e) => { userClick(e); }}><img src={board['1'][4] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][4] + ".png"}></img></td>
-                  <td playerindex='1' cellindex='5' onClick={(e) => { userClick(e); }}><img src={board['1'][5] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][5] + ".png"}></img></td>
+                  <td className={board['1'][3] == 0 ? "clickable" : "non-clickable"} playerindex='1' cellindex='3' onClick={(e) => { userClick(e); }}><img src={board['1'][3] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][3] + ".png"}></img></td>
+                  <td className={board['1'][4] == 0 ? "clickable" : "non-clickable"}playerindex='1' cellindex='4' onClick={(e) => { userClick(e); }}><img src={board['1'][4] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][4] + ".png"}></img></td>
+                  <td className={board['1'][5] == 0 ? "clickable" : "non-clickable"}playerindex='1' cellindex='5' onClick={(e) => { userClick(e); }}><img src={board['1'][5] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][5] + ".png"}></img></td>
                   <td>
                     <label className="player1-radio-label">
                       <span className="player1-radio-custom">
@@ -144,9 +144,9 @@ const GamePage = (props) => {
                   </td>
                 </tr>
                 <tr>
-                  <td playerindex='1' cellindex='6' onClick={(e) => { userClick(e); }}><img src={board['1'][6] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][6] + ".png"}></img></td>
-                  <td playerindex='1' cellindex='7' onClick={(e) => { userClick(e); }}><img src={board['1'][7] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][7] + ".png"}></img></td>
-                  <td playerindex='1' cellindex='8' onClick={(e) => { userClick(e); }}><img src={board['1'][8] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][8] + ".png"}></img></td>
+                  <td className={board['1'][6] == 0 ? "clickable" : "non-clickable"} playerindex='1' cellindex='6' onClick={(e) => { userClick(e); }}><img src={board['1'][6] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][6] + ".png"}></img></td>
+                  <td className={board['1'][7] == 0 ? "clickable" : "non-clickable"} playerindex='1' cellindex='7' onClick={(e) => { userClick(e); }}><img src={board['1'][7] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][7] + ".png"}></img></td>
+                  <td className={board['1'][8] == 0 ? "clickable" : "non-clickable"} playerindex='1' cellindex='8' onClick={(e) => { userClick(e); }}><img src={board['1'][8] == 0 ? "/Assets/Images/Grey/Empty_Cell.png" : "/Assets/Images/Grey/Dice_" + board['1'][8] + ".png"}></img></td>
                   <td>
                     <label className="player1-radio-label">
                       <span className="player1-radio-custom">
@@ -213,9 +213,9 @@ const GamePage = (props) => {
                       </span>
                     </label>
                   </td>
-                  <td playerindex='2' cellindex='0' onClick={(e) => { userClick(e); }}><img src={board['2'][0] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][0] + ".png"}></img></td>
-                  <td playerindex='2' cellindex='1' onClick={(e) => { userClick(e); }}><img src={board['2'][1] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][1] + ".png"}></img></td>
-                  <td playerindex='2' cellindex='2' onClick={(e) => { userClick(e); }}><img src={board['2'][2] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][2] + ".png"}></img></td>
+                  <td className={board['2'][0] == 0 ? "clickable" : "non-clickable"} playerindex='2' cellindex='0' onClick={(e) => { userClick(e); }}><img src={board['2'][0] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][0] + ".png"}></img></td>
+                  <td className={board['2'][1] == 0 ? "clickable" : "non-clickable"} playerindex='2' cellindex='1' onClick={(e) => { userClick(e); }}><img src={board['2'][1] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][1] + ".png"}></img></td>
+                  <td className={board['2'][2] == 0 ? "clickable" : "non-clickable"} playerindex='2' cellindex='2' onClick={(e) => { userClick(e); }}><img src={board['2'][2] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][2] + ".png"}></img></td>
                 </tr>
                 <tr>
                   <td>
@@ -226,9 +226,9 @@ const GamePage = (props) => {
                       </span>
                     </label>
                   </td>
-                  <td playerindex='2' cellindex='3' onClick={(e) => { userClick(e); }}><img src={board['2'][3] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][3] + ".png"}></img></td>
-                  <td playerindex='2' cellindex='4' onClick={(e) => { userClick(e); }}><img src={board['2'][4] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][4] + ".png"}></img></td>
-                  <td playerindex='2' cellindex='5' onClick={(e) => { userClick(e); }}><img src={board['2'][5] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][5] + ".png"}></img></td>
+                  <td className={board['2'][3] == 0 ? "clickable" : "non-clickable"} playerindex='2' cellindex='3' onClick={(e) => { userClick(e); }}><img src={board['2'][3] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][3] + ".png"}></img></td>
+                  <td className={board['2'][4] == 0 ? "clickable" : "non-clickable"} playerindex='2' cellindex='4' onClick={(e) => { userClick(e); }}><img src={board['2'][4] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][4] + ".png"}></img></td>
+                  <td className={board['2'][5] == 0 ? "clickable" : "non-clickable"} playerindex='2' cellindex='5' onClick={(e) => { userClick(e); }}><img src={board['2'][5] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][5] + ".png"}></img></td>
                 </tr>
                 <tr>
                   <td>
@@ -239,9 +239,9 @@ const GamePage = (props) => {
                       </span>
                     </label>
                   </td>
-                  <td playerindex='2' cellindex='6' onClick={(e) => { userClick(e); }}><img src={board['2'][6] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][6] + ".png"}></img></td>
-                  <td playerindex='2' cellindex='7' onClick={(e) => { userClick(e); }}><img src={board['2'][7] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][7] + ".png"}></img></td>
-                  <td playerindex='2' cellindex='8' onClick={(e) => { userClick(e); }}><img src={board['2'][8] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][8] + ".png"}></img></td>
+                  <td className={board['2'][6] == 0 ? "clickable" : "non-clickable"} playerindex='2' cellindex='6' onClick={(e) => { userClick(e); }}><img src={board['2'][6] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][6] + ".png"}></img></td>
+                  <td className={board['2'][7] == 0 ? "clickable" : "non-clickable"} playerindex='2' cellindex='7' onClick={(e) => { userClick(e); }}><img src={board['2'][7] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][7] + ".png"}></img></td>
+                  <td className={board['2'][8] == 0 ? "clickable" : "non-clickable"} playerindex='2' cellindex='8' onClick={(e) => { userClick(e); }}><img src={board['2'][8] == 0 ? "/Assets/Images/Orange/Empty_Cell.png" : "/Assets/Images/Orange/Dice_" + board['2'][8] + ".png"}></img></td>
                 </tr>
               </tbody>
             </table>

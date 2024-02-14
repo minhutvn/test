@@ -30,8 +30,10 @@ io.on('connection', (socket) => {
         hostEmailData[cdata.gameId] = cdata.email;
     });
     socket.on("join email", (jdata) => {
-        console.log(jdata.email);
-        console.log(jdata.joinId);
+        console.log("join email");
+
+        console.log(jdata,toString());
+        console.log(jdata);
 
         if (hostEmailData[jdata.joinId]) {
             const time = new Date();

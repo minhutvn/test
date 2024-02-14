@@ -68,18 +68,19 @@ const HomePage = (props) => {
                   const org = window.location.href
                   window.location.href = org + "?gameId=" + document.getElementById('joinInput').value;
                   props.socket.emit("join email", {
-                    email: document.getElementById('email').value,
+                    email: document.getElementById('joinEmail').value,
                     joinId : document.getElementById('joinInput').value
                 });
                 }}> 
                 <span>Join Session</span>
               </button>
               <div className="joinInput-wrapper">
+                  <input type="text" placeholder="Enter your e-mail" id="joinEmail"></input>
                   <input type="text" placeholder="Enter session ID" id="joinInput"></input>
               </div>
             </div>
 
-            <p>! Please enter your unique e-mail when creating sessions <br/> to help us analyze game plays...</p>
+            <p>! Please enter your unique e-mail when creating or joining sessions <br/> to help us analyze game plays...</p>
 
           </div>
         ) : (
